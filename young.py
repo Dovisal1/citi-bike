@@ -19,13 +19,12 @@ for file in glob.glob('*2016*csv'):
 		reader = csv.reader(csvfile, delimiter=',')
 		next(reader)
 		for row in reader:
-			station.append(row[5])
+			station.append(row[4])
 			birth.append(row[13])
 
 d = {'station' : station, 'age' : birth}
 
 df = pd.DataFrame(d)
 
-means = df.groupby(['station']).mean().set_index('station').to_dict()
-print means
+means = df.groupby(['station']).mean()
 

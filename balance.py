@@ -16,8 +16,8 @@ for file in glob.glob('*2016*csv'):
 		reader = csv.reader(csvfile, delimiter=',')
 		next(reader)
 		for row in reader:
-			start.append(row[5])
-			end.append(row[9])
+			start.append(row[4])
+			end.append(row[8])
 
 
 start_count = {}
