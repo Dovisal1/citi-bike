@@ -31,7 +31,8 @@ d = {'station' : station, 'age' : birth}
 df = pd.DataFrame(d)
 
 # maximum birth year is minimum age
-ystation = df.groupby(['station']).mean()['age'].idxmax()
+means = df.groupby(['station']).mean()
+ystation = means['age'].idxmax()
 yage = means.age[ystation]
 
 age = datetime.today().year - yage
