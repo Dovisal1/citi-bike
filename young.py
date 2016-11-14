@@ -15,6 +15,7 @@ birth = []
 
 print "reading"
 for file in glob.glob('*2016*csv'):
+	print(file)
 	with open(file,'r') as csvfile:
 		reader = csv.reader(csvfile, delimiter=',')
 		next(reader)
@@ -29,5 +30,11 @@ d = {'station' : station, 'age' : birth}
 
 df = pd.DataFrame(d)
 
-means = df.groupby(['station']).mean()
+# maximum birth year is minimum age
+ystation = df.groupby(['station']).mean()['age'].idxmax()
+yage = means.age[ystation]
+
+age = datetime.today().year - yage
+
+print "%s is the youngest station with average biker aged %s" % (ystation, age)
 
