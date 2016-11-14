@@ -28,7 +28,7 @@ for station in set(start):
 
 deltas = {}
 for key,val in start_count.items():
-	deltas[key] = end[count] - start[count]
+	deltas[key] = end_count[key] - start_count[key]
 
 heavyend = max(deltas, key=deltas.get)
 heavystart = min(deltas, key=deltas.get)
