@@ -35,7 +35,7 @@ means = df.groupby(['station']).mean()
 ystation = means['age'].idxmax()
 yage = means.age[ystation]
 
-age = datetime.today().year - yage
+age = float(datetime.today().year) - yage
 
 print "%s is the youngest station with average biker aged %s" % (ystation, age)
 
