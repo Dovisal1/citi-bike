@@ -19,8 +19,11 @@ for file in glob.glob('*2016*csv'):
 		reader = csv.reader(csvfile, delimiter=',')
 		next(reader)
 		for row in reader:
-			station.append(row[4])
-			birth.append(row[13])
+			try:
+				birth.append(int(row[13]))
+				station.append(row[4])
+			except:
+				continue
 
 d = {'station' : station, 'age' : birth}
 
