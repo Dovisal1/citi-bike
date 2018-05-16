@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 
 
 import os
@@ -12,6 +13,7 @@ end = []
 
 
 for file in glob.glob('*2016*csv'):
+	print(file)
 	with open(file,'r') as csvfile:
 		reader = csv.reader(csvfile, delimiter=',')
 		next(reader)
@@ -27,11 +29,12 @@ for station in set(start):
 	end_count[station] = end.count(station)
 
 deltas = {}
-for key,val in start_count.items():
+for key in start_count:
 	deltas[key] = end_count[key] - start_count[key]
 
 heavyend = max(deltas, key=deltas.get)
 heavystart = min(deltas, key=deltas.get)
 
-print "The most unbalanced stating station is %s with %d more stating than ending" % (heavystart, abs(deltas[heavystart]))
-print "The most unbalanced ending station is %s with %d more ending than starting" % (heavyend, abs(deltas[heavyend]))
+print('The most unbalanced stating station is {} with {} more stating than ending'.format(heavystart, abs(deltas[heavystart])))
+print('The most unbalanced ending station is {} with {} more ending than starting'.format(heavyend, abs(deltas[heavyend])))
+

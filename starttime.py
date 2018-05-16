@@ -10,6 +10,7 @@ timeformat = '%m/%d/%Y %H:%M:%S'
 starttimes = []
 
 for file in glob.glob('*2016*csv'):
+	print(file)
 	with open(file,'r') as csvfile:
 		reader = csv.reader(csvfile, delimiter=',')
 		next(reader)
@@ -26,11 +27,16 @@ for i in range(24):
 for t in weekdaytimes:
 	hours[t.hour] += 1
 
-print hours
+#print hours
 
 pophour = max(hours, key=hours.get)
-print pophour
+pm = pophour / 12
+time = pophour % 12
 
+meridian = ""
+if pm == 1:
+    meridian = "PM"
+else:
+    meridian = "AM"
 
-
-			
+print "The most popular hour of service is %d%s" % (time,meridian)	
